@@ -1,0 +1,58 @@
+.form-wrapper-signup {
+  width: 22vw;
+  height: 62vh;
+  position: absolute;
+  left: 39vw;
+  top: 20vh;
+  z-index: 9999;
+  background-color: #F9FDFF;
+  border-radius: 15px;
+  box-shadow: -8px 8px 7px #9a9b9c;
+}
+
+.form-title-signup {
+  margin: 0.10em auto 1.45em;
+  text-align: center;
+  font-size: 1.973em;
+  color: #6398FF;
+  font-weight: normal;
+}
+
+.form-body-signup {
+  padding: 1em 1.657em ;
+}
+
+.btn-submit-signup{
+  background-color: #6398FF;
+  color: #F9FDFF;
+  font-size: 1.102em;
+  width: 100%;
+  height: 30px;
+  margin: 0.95em 0;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.btn-submit-signup:hover {
+  background-color: #2f72f5;
+}
+
+.already-register {
+  margin: 1.34em 0 0;
+}
+
+.form-message-signup {
+  display: inline;
+  color: #456268;
+
+}
+
+.form-signin-signup {
+  display: inline;
+  color: #6398FF;
+  margin: 0 0.26em;
+  text-decoration: none;
+
+}

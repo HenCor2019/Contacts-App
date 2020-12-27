@@ -7,7 +7,9 @@
 .form-input {
   border: 0;
   border-bottom: 1px solid #456268; 
-  width: 90%;
+  width: 95%;
+  outline: none;
+  background-color: transparent;
   color: #6398FF;
   font-size: 0.951em; 
   margin:  0 0 0.841em 0;
@@ -19,7 +21,7 @@
   outline: none;
   border-bottom: 0.17em solid #6398FF;
   transition: 200ms ease-in-out;
-  width: 95%;
+  width: 100%;
   color: #6398FF;
   font-size: 0.851em; 
   margin: 0.641em 0;

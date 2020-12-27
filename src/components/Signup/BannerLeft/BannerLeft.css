@@ -1,0 +1,13 @@
+.banner-left {
+  align-self: flex-start;
+  align-content: flex-start;
+  width: 50vw;
+  height: 100vh;
+}
+
+.banner-left-title {
+  margin: 0.37em 0.5em;
+  font-weight: normal;
+  font-size: 2.231em;
+  color: #6398FF;
+}

@@ -1,0 +1,24 @@
+.banner-right{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color:#6398FF; 
+  width: 50vw;
+  height: 100vh;
+}
+
+.banner-right-title{
+  color: #F9FDFF;
+  font-size: 1.90em;
+  font-weight: normal;
+  margin: 0;
+  padding: 0 1em;
+} 
+
+.banner-right-message {
+  color: #F9FDFF;
+  font-size: 1.29em;
+  margin: 0.69em 0;
+  padding: 0 0.85em;
+}
