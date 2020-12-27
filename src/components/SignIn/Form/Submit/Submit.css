@@ -1,0 +1,29 @@
+.submit-wrapper {
+  margin: 1.34em 0;
+}
+
+.btn-submit {
+  background-color: #6398FF;
+  color: #F9FDFF;
+  font-size: 0.91em;
+  border: none;
+  border-radius: 50px;
+  width: 30%;
+  height: 35px;
+  padding: 6px 0;
+  cursor: pointer;
+  outline: none;
+
+}
+
+.btn-submit:hover {
+  background-color: #2f72f5;
+}
+
+.recover-password-link {
+  color: #6398FF;
+  text-decoration: none;
+  font-size: 0.987em;
+  width: 65%;
+  margin: 0 0 0 0.834em;
+}

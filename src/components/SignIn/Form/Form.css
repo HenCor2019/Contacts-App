@@ -1,0 +1,37 @@
+.form-wrapper {
+  position: absolute;
+  left: 8vw;
+  top: 20vh;
+  width: 20vw;
+  height: 55vh;
+  z-index: 9999;
+  background-color: #F9FDFF;
+  padding: 1.12em;
+  border-radius: 15px;
+  box-shadow: 8px 8px 5px #9a9b9c;
+}
+
+.form-title {
+  font-size: 1.344em;
+  padding-bottom: 0.16em;
+  margin: 0;
+  color: #456268; 
+  margin: 0 0 1.629em 0;
+  font-weight: normal;
+}
+
+.form-title span {
+  font-size: 1.594em;
+  color: #6398FF;
+  padding-right: 2px;
+
+}
+
+.form-body {
+  margin: 1.175em 0 0 0;
+}
+
+
+
+
+

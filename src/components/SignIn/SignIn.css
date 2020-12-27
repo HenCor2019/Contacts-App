@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  justify-content: around;
+}
+.left-color{
+  width: 20vw;
+  height: 100vh;
+  background-color: #6398FF;
+}
+
+.right-color{
+  width: 75vw;
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right-img{
+  width: 65%;
+  height: 65%;
+  align-self: flex-end;
+  margin: 4em 0 0 ;
+}

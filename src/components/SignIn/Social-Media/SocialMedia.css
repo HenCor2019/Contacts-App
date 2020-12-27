@@ -1,0 +1,10 @@
+.social-media{
+  display: flex;
+  list-style-type: none;
+  align-self: flex-end;
+}
+
+.social-media-icon{
+  color: #6398FF;
+  margin: 0 1.09em;
+}
