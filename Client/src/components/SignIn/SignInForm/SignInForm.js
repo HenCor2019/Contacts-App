@@ -1,10 +1,10 @@
 import React from 'react'
-import './Form.css'
+import './SignInForm.css'
 import Input from './Input/Input'
 import Register from './Register/Register'
 import Submit from './Submit/Submit'
 
-export default function Form(){
+export default function SignInForm(){
   return(
     <div className='form-wrapper'>
       <h1 className='form-title'>Bienvenido a <br /> <span>HenCor contactos</span></h1>

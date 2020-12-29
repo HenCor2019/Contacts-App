@@ -1,0 +1,30 @@
+.verified-email-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: 100vw; */
+  /* height: 100vh; */
+}
+
+.verified-email-message {
+  text-align: center;
+  width: 600px;
+  word-wrap: break-word;
+  color: #456268;
+  font-size: 1.94em;
+  font-weight: normal;
+}
+
+.verified-email-message span {
+  color: #6398FF;
+  font-size: 1.19em;
+  text-align: center;
+}
+
+.verified-email-img {
+  width: 40%
+}
+
+
+
