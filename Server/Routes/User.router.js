@@ -1,9 +1,12 @@
 const express = require('express')
-const { SignUp } = require('../Controllers/User/User.controller')
+const {signUp , signUpHandler } = require('../Controllers/User/User.controller')
 
 const router = express.Router()
 
 //metodos del usuario
-router.post('/register', SignUp)
+router.post('/register', signUp)
+
+// verificación del usuario
+router.get('/register-verify', signUpHandler)
 
 module.exports = router

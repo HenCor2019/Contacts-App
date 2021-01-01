@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import emailImage from '../../../img/mensaje_enviado.svg'
 
 import './Register.css'

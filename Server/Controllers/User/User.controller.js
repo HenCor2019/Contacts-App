@@ -6,7 +6,7 @@ const mailer = require('../Utilities/SendGridMailer')
 
 
 var UserController = {
-  SignUp: async (req, res) => {
+  signUp: async (req, res) => {
     try{
 
       await registerValidator(req.body)
@@ -43,11 +43,33 @@ var UserController = {
 
       await mailer(registerEmail)
 
-      return res.header('register', token).status(201).json({ error: false, message: 'Correo enviado exitosamente' })
+      return res.header('Register', token).status(201).json({ error: false, message: 'Correo enviado exitosamente' })
 
     } catch( err ) {
       return res.status(400).json({error:true, message:err.details != null ? err.details[0].message : err}) 
 
+    }
+  },
+  signUpHandler: async (req,res) => {
+    try{
+      const token = req.header('Register')
+      
+      if(!token) throw 'Access Denied'
+
+      const verifiedToken = jwt.verify(token, process.env.TOKEN_REGISTER_KEY)
+
+      if(!verifiedToken) throw 'Access Denied'
+
+      const user = await User.findOne({ _id: verifiedToken._id })
+
+      if(!user) throw 'Sucedio un error'
+
+      await User.findOneAndUpdate({ _id: verifiedToken._id }, { active: true })
+
+      return res.status(200).json({ error: false, message: 'Usuario registrado', username: user.username })
+
+    } catch(err) {
+      return res.status(500).json({ error: true, message: err })
     }
   }
 }
