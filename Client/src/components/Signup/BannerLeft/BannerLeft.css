@@ -11,3 +11,10 @@
   font-size: 2.231em;
   color: #6398FF;
 }
+
+.banner-left-title span {
+  color: #F9FDFF;
+  padding: 0 0.23em 0;
+  background-color: #6398FF;
+  border-radius: 4px;
+}

@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react'
-import BannerLeft from '../../components/Signup/BannerLeft/BannerLeft'
-import BannerRight from '../../components/Signup/BannerRight/BannerRight'
-import SignUpForm from '../../components/Signup/SignUpForm/SignUpForm'
-import Register from '../../components/Signup/Register/Register'
+import BannerLeft from '../../components/SignUp/BannerLeft/BannerLeft'
+import BannerRight from '../../components/SignUp/BannerRight/BannerRight'
+import SignUpForm from '../../components/SignUp/SignUpForm/SignUpForm'
+import Register from '../../components/SignUp/Register/Register'
 import './SignUp.css'
 
 export default function SignUp(){
@@ -18,7 +18,7 @@ export default function SignUp(){
        ?  
       (<div className='sign-up-wrapper'>
 
-      <BannerLeft title='HenCor contactos' />
+      <BannerLeft title='HenCor' />
 
       <SignUpForm
          email={email}

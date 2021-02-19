@@ -27,6 +27,15 @@
 
 }
 
+.form-title span span {
+  margin: 0 0.32em 0;
+  font-size: 0.994em;
+  color: #F9FDFF;
+  padding: 0 0.13em 0;
+  background-color: #6398FF;
+  border-radius: 4px;
+
+}
 .form-body {
   margin: 1.175em 0 0 0;
 }

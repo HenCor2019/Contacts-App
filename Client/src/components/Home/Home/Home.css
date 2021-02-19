@@ -1,0 +1,27 @@
+.home-information-top{
+  color: #F9FDFF;
+  height: 30vh;
+  background-color: #6398FF;
+}
+
+.home-information-down {
+  color: #456268;
+  height: 70vh;
+  background-color: #F9FDFF;
+}
+
+.home-information-down-title{
+  font-size: 1.95em;
+  text-align: center;
+  font-weight: normal;
+}
+
+.home-imgs-information{
+  display: flex;
+  justify-content: space-around;
+}
+
+.home-imgs-information div{
+  margin-left: auto;
+
+}

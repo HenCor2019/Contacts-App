@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
 import Input from '../../SignIn/SignInForm/Input/Input'
 import './SignUpForm.css'
 
@@ -75,7 +76,9 @@ export default function SignUpForm(props){
          <p className={preRegister.error ? 'signup-wait' : 'signup-err'}>{ preRegister.message }</p>
         <div className="already-register">
            <p className="form-message-signup">¿Ya posees una cuenta?</p>
-           <a href="#"  className='form-signin-signup'>Ingresa</a>
+           <Link to='/signIn' className='form-signin-signup' >
+              Ingresa
+           </Link>
         </div>
       </form>
     </div>

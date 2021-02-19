@@ -1,0 +1,16 @@
+.link-home{
+  padding: 0 1.34em 0;
+  font-size: 1.35em;
+  text-decoration: none;
+
+}
+
+.link-home .redirect-link{
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.32em;
+}
+
+.link-home .redirect-link:hover {
+  border-bottom: solid #F9FDFF 1px;
+}
