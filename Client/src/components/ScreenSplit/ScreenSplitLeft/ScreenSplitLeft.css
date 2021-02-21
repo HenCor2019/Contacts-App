@@ -1,0 +1,7 @@
+.screen-left {
+  align-self: flex-start;
+  align-content: flex-start;
+  width: 50vw;
+  height: 100vh;
+}
+

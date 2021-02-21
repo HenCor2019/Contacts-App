@@ -1,15 +1,15 @@
-.register-wrapper {
-  margin: 2em 0 0 0;
-  padding-top: 1.19em;
+.form-footer-wrapper {
+  margin: 0.173em 0 0 0;
+  padding-top: 0.79em;
 }
 
-.register-text {
+.form-footer-text {
   display: inline;
   font-size: 1.01em;
   color: #456268; 
 }
 
-.register-link {
+.form-footer-link {
   font-size: 1.01em;
   text-decoration: none;
   color: #6398FF;

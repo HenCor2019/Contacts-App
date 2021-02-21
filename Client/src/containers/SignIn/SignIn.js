@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
-import './SignIn.css'
 import LoginImg from './../../img/contacts_login.svg'
 import SignInForm from '../../components/SignIn/SignInForm/SignInForm'
 import SocialMedia from '../../components/SignIn/Social-Media/SocialMedia';
+
+// css files
+import './SignIn.css'
 
 export default function SignIn(){
   return(

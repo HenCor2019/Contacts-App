@@ -1,0 +1,11 @@
+.screen-right{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color:#6398FF; 
+  width: 50vw;
+  height: 100vh;
+}
+
+

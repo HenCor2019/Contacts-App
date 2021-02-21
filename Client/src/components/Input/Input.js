@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import './Input.css'
 
-export default function Input({ id, title, type, value, onChange }){
+export default function Input({ id, title, type, value, onChange, placeholder }){
   return(
     <Fragment>
       <label htmlFor={id} className='form-label'>{title}</label>
@@ -11,6 +11,7 @@ export default function Input({ id, title, type, value, onChange }){
          id={ id }
          className='form-input'
          value={value}
+         placeholder={placeholder}
          onChange={onChange}  />
     </Fragment>
   )

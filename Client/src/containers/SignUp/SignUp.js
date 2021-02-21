@@ -1,25 +1,43 @@
 import React, { Fragment, useState } from 'react'
-import BannerLeft from '../../components/SignUp/BannerLeft/BannerLeft'
-import BannerRight from '../../components/SignUp/BannerRight/BannerRight'
+import ScreenSplitLeft from '../../components/ScreenSplit/ScreenSplitLeft/ScreenSplitLeft'
+import ScreenSplitRight from '../../components/ScreenSplit/ScreenSplitRight/ScreenSplitRight'
 import SignUpForm from '../../components/SignUp/SignUpForm/SignUpForm'
 import Register from '../../components/SignUp/Register/Register'
 import './SignUp.css'
+import {registerUser} from '../../services/Services'
+
+const MESSAGE_SEND={ 
+  header:'Enviado',
+  body:'Ingresa a tu dirección de correo electrónico y sigue las instrucciones'
+}
 
 export default function SignUp(){
 
-  const [ register, setRegister ] = useState(false)
+  const [ register, setRegister ] = useState({ message: '', error: false, loading: false, success: false })
   const [ email, setEmail ] = useState('')
   const [ username, setUsername ] = useState('')
   const [ password, setPassword ] = useState('')
 
+  const handlerOnSubmit = async (email, username, password) => {
+
+    await registerUser(email, username, password).then(response => {
+
+      if(!response.error){
+         setRegister({ ...register, loading:false, success:true })
+         return
+      }
+
+      setRegister({ ...register,  message: response.message, error: true, loading:false })
+      return
+    })
+  }
+
   return(
     <Fragment>
-      { !register 
+      { !register.success 
        ?  
       (<div className='sign-up-wrapper'>
-
-      <BannerLeft title='HenCor' />
-
+      <ScreenSplitLeft />
       <SignUpForm
          email={email}
          username={username}
@@ -27,18 +45,16 @@ export default function SignUp(){
          setEmail={setEmail} 
          setUsername={setUsername}
          setPassword={setPassword}
+         handlerOnSubmit={handlerOnSubmit}
+         register={register}
          setRegister={setRegister}
       />
-
-      <BannerRight 
-        title='Controla tus contactos' 
-        message='Agenda los contactos más importantes'
-      />
+      <ScreenSplitRight />
       </div> ) 
       :
         <Register
-           email={ email }
-           username={ username }
+           header={MESSAGE_SEND.header}
+           body={MESSAGE_SEND.body}
         />
       }
     </Fragment>

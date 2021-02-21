@@ -1,14 +1,17 @@
 import { useParams } from 'react-router'
 import VerifiedSignUp from './VerifiedSignUp'
 import React, {Fragment, useState} from 'react'
+import {registerHandler} from '../../services/Services'
+
 
 // css
 import './HandlerSignUp.css'
 
+
 export default function HandlerSignUp(){
   const { token } = useParams()
-  const API_SERVER = 'http://localhost:5000'
-  const [updated, setUpdated ] = useState({ verify: false, username:'', waiting: false, error: ''})
+  const [updated, setUpdated ] = useState({ verify: false, username:'', waiting: false})
+
 
   const handlerEmail = async (e) => {
     e.preventDefault()
@@ -16,17 +19,23 @@ export default function HandlerSignUp(){
 
     if(updated.verify) return
 
-    await fetch(`${API_SERVER}/users/register-verify`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Register': token,
-      }
-    }).then( response => response.json() ).then( responseJSON => {
+    const response = registerHandler(token)
 
-      responseJSON.error ? setUpdated({...updated, waiting: false}) : setUpdated({ verify: true, username: responseJSON.username})
-    } ).catch(error =>  setUpdated({ ...updated, waiting: true, error }))
+    if(!response.error){
+      
+      setUpdated({ 
+        verify: true,
+        username: response.username,
+        waiting:false})
 
+      return
+    }
+
+    setUpdated({ ...updated, waiting:false })
+
+    return
   }
+
   return(
     <Fragment>
       { !updated.verify ? 
