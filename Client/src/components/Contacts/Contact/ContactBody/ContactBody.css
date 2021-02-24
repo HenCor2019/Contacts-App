@@ -1,0 +1,19 @@
+.contact-body-input {
+  color: #F9FDFF;
+  font-size: 1.244em;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  margin: 2% 0 2% 3%;
+}
+
+.contact-body {
+  color: #F9FDFF;
+  font-size: 0.824em;
+  margin: 2% 0 2% 3%;
+}
+
+hr {
+  width: 90%;
+  margin: 0.12em 0 0.12em 0.576em;
+}

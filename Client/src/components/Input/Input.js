@@ -1,18 +1,22 @@
-import React, {Fragment} from 'react'
+import React from 'react'
+
+// CSS FILES
 import './Input.css'
 
 export default function Input({ id, title, type, value, onChange, placeholder }){
   return(
-    <Fragment>
-      <label htmlFor={id} className='form-label'>{title}</label>
-      <br />
+    <div className="form__group field">
       <input
-         type={type}
-         id={ id }
-         className='form-input'
-         value={value}
-         placeholder={placeholder}
-         onChange={onChange}  />
-    </Fragment>
+        type={ type }
+        className="form__field"
+        placeholder={placeholder}
+        htmlFor={id}
+        id={id}
+        value={value}
+        onChange={onChange} required 
+        autoComplete='off'
+      />
+      <label htmlFor={id} className="form__label">{title}</label>
+    </div>
   )
 }

@@ -1,12 +1,12 @@
-.signup-err{
-  font-size: 0.951em;
+.message-err{
+  font-size: 0.801em;
   color: #e84e43;
   margin: 0.13em 0;
   text-align: center;
 }
 
-.signup-wait{
-  font-size: 0.951em;
+.message-success{
+  font-size: 0.801em;
   color: #6398FF;
   margin: 0.13em 0;
   text-align: center;

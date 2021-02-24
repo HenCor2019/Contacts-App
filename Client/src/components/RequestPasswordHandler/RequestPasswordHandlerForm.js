@@ -1,53 +1,69 @@
-import React from 'react'
-import Input from '../Input/Input'
-import { useParams } from 'react-router'
+import React, { Fragment } from "react";
+import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 
-//css files
-import './RequestPasswordHandlerForm.css'
-import ButtonForm from '../ButtonForm/ButtonForm'
-import InformationMessage from '../InformationMessage/InformationMessage'
+//CSS FILES
+import "./RequestPasswordHandlerForm.css";
 
-const INSTRUCTIONS_MESSAGE = 'Introduce a continuación tu nueva contraseña'
+// COMPONENTS
+import Input from "../Input/Input";
+import ButtonForm from "../ButtonForm/ButtonForm";
+import Warning from "../Warning/Warning";
 
-export default function RequestPasswordHandlerForm(props){
+const INSTRUCTIONS_MESSAGE = "Introduce a continuación tu nueva contraseña";
 
-  const { password, setPassword, status, setStatus, handlerOnSubmit } = props
+export default function RequestPasswordHandlerForm(props) {
+  const { password, setPassword, status, setStatus, handlerOnSubmit } = props;
 
-  const { token } = useParams()
+  const history = useHistory();
 
-  const handlerOnChange = (e,save) => save(e.target.value)
+  const { token } = useParams();
 
-  const _handlerOnSubmit = async e => {
-    e.preventDefault()
+  const handlerOnChange = (e, save) => save(e.target.value);
 
-    setStatus({ ...status,error: false, loading: true, message: '' })
+  const _handlerOnSubmit = async (e) => {
+    e.preventDefault();
 
-    if(!password){
-      setStatus({ ...status, error: true, loading: false, message: 'Introduce tu nueva contraseña'})
-      return
+    setStatus({ ...status, error: false, loading: true, message: "" });
+
+    if (!password) {
+      setStatus({
+        ...status,
+        error: true,
+        loading: false,
+        message: "Introduce tu nueva contraseña",
+      });
+      return;
     }
 
-    handlerOnSubmit(password, token)
+    handlerOnSubmit(password, token);
+  };
 
-  }
-
-  return(
-    <div className="form-wrapper-request">
-      <form className="form-request" onSubmit={_handlerOnSubmit}>
-        <h1 className="form-title-request">Recuperación de contraseña</h1>
-        <p className="form-message-request">{INSTRUCTIONS_MESSAGE}</p>
-        <Input 
-          id='password'
-          title='Nueva contraseña'
-          type='password'
-          value={password}
-          placeholder='Ingresa tu nueva contraseña'
-          onChange={(e) => handlerOnChange(e,setPassword)}
-        />
-        <ButtonForm loading={status.loading} message='Restablecer contraseña' />
-        <InformationMessage error={status.error} message={status.message} />
-      </form>
-    </div>
-
-  )
+  return (
+    <Fragment>
+      {token ? (
+        <div className="form-wrapper-request">
+          <form className="form-request" onSubmit={_handlerOnSubmit}>
+            <h1 className="form-title-request">Recuperación de contraseña</h1>
+            <p className="form-message-request">{INSTRUCTIONS_MESSAGE}</p>
+            <Input
+              id="password"
+              title="Nueva contraseña"
+              type="password"
+              value={password}
+              placeholder="Ingresa tu nueva contraseña"
+              onChange={(e) => handlerOnChange(e, setPassword)}
+            />
+            <ButtonForm
+              loading={status.loading}
+              message="Restablecer contraseña"
+            />
+            <Warning error={status.error} message={status.message} />
+          </form>
+        </div>
+      ) : (
+        history.push("/")
+      )}
+    </Fragment>
+  );
 }

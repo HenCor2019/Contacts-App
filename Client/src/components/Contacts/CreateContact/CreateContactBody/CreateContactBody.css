@@ -1,0 +1,16 @@
+.new-contact-body-input {
+  width: 85%;
+  height: 80%;
+  border: none;
+  margin: 0 1em;
+  border-radius: 4%;
+  outline: none;
+  color: #6398FF;
+}
+
+.new-contact-body-label {
+  color: #F9FDFF;
+  font-size: 0.824em;
+  margin: 1.46em 0.98em 0.421em 1em;
+}
+

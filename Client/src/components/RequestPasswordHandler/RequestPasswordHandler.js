@@ -1,35 +1,48 @@
-import React, {useState} from 'react'
-import RequestPasswordHandlerForm from './RequestPasswordHandlerForm'
-import ScreenSplitLeft from '../ScreenSplit/ScreenSplitLeft/ScreenSplitLeft'
-import ScreenSplitRight from '../ScreenSplit/ScreenSplitRight/ScreenSplitRight'
+import React, { useState } from "react";
+import RequestPasswordHandlerForm from "./RequestPasswordHandlerForm";
+import ScreenSplitLeft from "../ScreenSplit/ScreenSplitLeft/ScreenSplitLeft";
+import ScreenSplitRight from "../ScreenSplit/ScreenSplitRight/ScreenSplitRight";
 
 // css files
-import './RequestPasswordHandler.css'
-import {requestPasswordHandler} from '../../services/Services'
+import "./RequestPasswordHandler.css";
+import { requestPasswordHandler } from "../../services/Services";
 
-export default function RequestPasswordHandler(){
-
-  const [password, setPassword] = useState('')
-  const [ status, setStatus ] = useState({ updated: false, error: false, loading: false, message:'' })
+export default function RequestPasswordHandler() {
+  const [password, setPassword] = useState("");
+  const [status, setStatus] = useState({
+    updated: false,
+    error: false,
+    loading: false,
+    message: "",
+  });
 
   const handlerOnSubmit = async (password, token) => {
+    setStatus({ ...status, loading: true });
 
-    setStatus({ ...status, loading: true })
+    await requestPasswordHandler(password, token)
+      .then((response) => {
+        if (!response.error) {
+          setStatus({
+            ...status,
+            updated: true,
+            loading: false,
+            message: response.message,
+          });
+          return;
+        }
 
-    await requestPasswordHandler(password, token).then(response => {
-      if(!response.error){
+        setStatus({
+          ...status,
+          loading: false,
+          error: true,
+          message: response.message,
+        });
+        return;
+      })
+      .catch((error) => console.log({ error }));
+  };
 
-        setStatus({ ...status, updated: true, loading: false, message: response.message  })
-        return
-      }
-
-      setStatus({ ...status, loading: false, error: true, message: response.message  })
-      return
-
-    }).catch(error => console.log({ error }))
-  }
-
-  return(
+  return (
     <div className="request-password-container">
       <ScreenSplitLeft />
       <RequestPasswordHandlerForm
@@ -37,9 +50,9 @@ export default function RequestPasswordHandler(){
         setPassword={setPassword}
         status={status}
         setStatus={setStatus}
-        handlerOnSubmit={handlerOnSubmit} 
+        handlerOnSubmit={handlerOnSubmit}
       />
       <ScreenSplitRight />
     </div>
-  )
+  );
 }

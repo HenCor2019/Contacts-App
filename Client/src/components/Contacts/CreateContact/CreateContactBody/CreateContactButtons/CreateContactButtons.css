@@ -1,0 +1,22 @@
+.create-buttons-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.create-buttons-flex .btn-create {
+  margin: 0.862em 0.991em;
+  padding: 0.278em 0.332em;
+  font-size: 1.044em;
+  color: #F9FDFF;
+  border: none;
+  cursor: pointer;
+  border-radius: 7%;
+  outline: none;
+}
+.btn-create-contact {
+  background-color: #6398FF;
+}
+
+.btn-cancel-contact {
+  background-color: #E64954;
+}

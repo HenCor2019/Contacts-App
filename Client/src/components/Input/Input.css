@@ -1,35 +1,78 @@
-.form-label {
-  font-size: 0.991em; 
-  color: #456268; 
-  margin: 2em 0;
-}
-
-.form-input {
-  border: 0;
-  border-bottom: 1px solid #456268; 
-  width: 95%;
-  outline: none;
-  background-color: transparent;
-  color: #6398FF;
-  font-size: 1.094em;
-  margin:  0 0 0.841em 0;
-
-}
-
-.form-input:focus {
-  border: 0;
-  outline: none;
-  border-bottom: 0.17em solid #6398FF;
-  transition: 200ms ease-in-out;
+/* #11998e: #11998e; */
+/* #11998e: #38ef7d; */
+/* #11998e: #fff; */
+/* #11998e: #9b9b9b; */
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
   width: 100%;
-  color: #6398FF;
-  font-size: 1.181em; 
-  margin: 0.641em 0;
+
 }
 
-.form-input::placeholder{
-  font-size: 0.904em;
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1.10rem;
   color: #6398FF;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.form__field::placeholder {
+    color: transparent;
+  }
+
+.form__field:placeholder-shown ~ .form__label {
+    font-size: 1.1rem;
+    cursor: text;
+    top: 20px;
 }
 
 
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 0.8rem;
+  color: #9b9b9b;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #6398FF,#6398FF);
+  border-image-slice: 1;
+}
+
+.form__field:focus .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #6398FF;
+    font-weight:700;    
+}
+
+
+/* reset input */
+.form__field:required, .form__field:invalid { box-shadow:none; }
+
+/* demo */
+/* body { */
+/*   font-family: 'Poppins', sans-serif;  */
+/*   display: flex; */
+/*   flex-direction: column; */
+/*   justify-content: center; */
+/*   align-items: center; */
+/*   min-height: 100vh; */
+/*   font-size: 1.5rem; */
+/*   background-color:#222222; */
+/* } */
