@@ -6,7 +6,7 @@ export default function NavBar() {
   return (
     <ul className="links-home">
       <LinkPage route="/" name="inicio" />
-      <LinkPage route="/contacts" name="Contáctanos" />
+      <LinkPage route="/who-are" name="¿Quienes somos?" />
       <LinkPage route="/SignUp" name="Registrarse" />
       <LinkPage route="/SignIn" name="Iniciar Sesión" />
     </ul>

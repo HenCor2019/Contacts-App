@@ -5,11 +5,9 @@ import './ContactBody.css'
 
 export default function ContactBody({ title, value }){
   return(
-    <div>
+    <div className='contact-body'>
+      <p className='contact-body-title'>{ title }</p>
       <p className="contact-body-input">{ value }</p>
-      <br />
-      <p className='contact-body'>{ title }</p>
-      <hr />
     </div>
   )
 }
