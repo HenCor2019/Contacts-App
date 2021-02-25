@@ -1,0 +1,31 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-button {
+  color: #FF9FDF;
+  background-color: #6398FF;
+  width: 35px;
+  height: 35px;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  margin: 0 0.654em;
+  cursor: pointer;
+}
+
+.pagination-button:hover, .pagination-change:hover {
+  background-color: #2f72f5;
+}
+
+.pagination-change {
+  color: #FF9FDF;
+  text-decoration: none;
+}
+
+
+
+
+
