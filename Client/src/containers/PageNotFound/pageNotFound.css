@@ -1,0 +1,77 @@
+.pnf-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F9FDFF;
+  color: #6398FF;
+  margin: 3em 0;
+}
+
+.pnf-img-container {
+  width: 55%;
+  margin: 1.10em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pnf-img {
+  width: 60%;
+  height: 60%;
+}
+
+
+.pnf-message{
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em 3em;
+}
+
+.pnf-message-title {
+  font-size: 7em;
+  font-weight: 700;
+  margin: 0.23em 0;
+}
+
+.pnf-message-body {
+  font-size: 1.724em;
+  text-align: center;
+  margin: 0 3em;
+  padding: 0 0.963em;
+  line-height: 35px;
+  font-weight: 600;
+}
+
+.pnf-message-footer {
+  font-size: 0.984em;
+  color: #74a0f7;
+  text-align: center;
+  margin: 2.43em 0 1.46em;
+  padding: 0 1.343em;
+  font-weight: 400;
+}
+
+.pnf-go-home {
+  background-color: #6398FF;
+  font-size: 1.22em;
+  color: #F9FDFF;
+  width: 130px;
+  height: 50px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.pnf-go-home:hover {
+  background-color: #2d6be3;
+}
+
+.pnf-go-home-link{
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
