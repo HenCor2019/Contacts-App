@@ -1,6 +1,6 @@
-.btn-logout{
-  color: #F9FDFF;
-  background-color: #E64954;
+.btn-logout {
+  color: #f9fdff;
+  background-color: #e64954;
   margin: 0 1.24em 0 0;
   padding: 0.55em;
   border-radius: 6px;
@@ -18,4 +18,3 @@
   padding: 0 0.483em;
   font-size: inherit;
 }
-

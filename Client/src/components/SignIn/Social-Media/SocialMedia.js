@@ -1,9 +1,9 @@
 import React from "react";
 
-// estilos
+// CSS FILES
 import "./SocialMedia.css";
 
-// iconos
+// ICONS
 import {
   faFacebook,
   faTwitter,

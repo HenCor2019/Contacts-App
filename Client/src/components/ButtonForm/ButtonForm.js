@@ -1,6 +1,6 @@
 import React from "react";
 
-// css files
+// CSS FILES
 import "./ButtonForm.css";
 
 export default function ButtonForm({ loading, message }) {

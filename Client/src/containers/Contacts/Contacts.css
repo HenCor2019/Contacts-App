@@ -1,25 +1,53 @@
 .contact-wrapper {
-  background-color: #F9FDFF;
+  background-color: #f9fdff;
 }
 
-.logout-contacts{
+.logout-contacts {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
   height: 12vh;
-  margin: 0.12em 0.331em; 
+  margin: 0.12em 0.331em;
 }
 
-.my-contacts-grid{
+.my-contacts-grid {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
-  grid-template-rows: repeat(3,1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 1.123em 2.31em;
   justify-content: center;
   margin: 0.51em 1.234em;
 }
 
-.test {
-  background-color: red;
+/* LOADER */
+/* FUENTE: https://speckyboy.com/css-loading-spinner-snippets/ */
+
+.loader-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  display: inline-block;
+  width: 95px;
+  height: 95px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #6398ff;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
 }

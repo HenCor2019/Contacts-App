@@ -61,15 +61,15 @@ export async function requestPasswordHandler(password, token) {
   }
 }
 
-export async function getContacts(token) {
+export async function getContacts(token, page = 1, limit = 7) {
   try {
     const response = await axios({
       url: `${BASE_URI}/contacts/get-contacts`,
       method: "GET",
       headers: { Author: token },
+      params: { page: page, limit: limit },
     });
 
-    console.log(response.data);
     return response.data;
   } catch (error) {
     return error.response.data;

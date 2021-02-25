@@ -14,6 +14,9 @@ import { createContact, getContacts } from "../../services/Services";
 
 // CONTEXT
 import UserContext from "../../context/UserContext";
+import Pagination from "../Pagination";
+
+const minPage = 1;
 
 export default function Contacts() {
   const { tokenId } = useContext(UserContext);
@@ -25,9 +28,12 @@ export default function Contacts() {
   const [status, setStatus] = useState({
     error: false,
     message: "",
-    loadign: false,
+    loading: false,
   });
   const [contacts, setContacts] = useState([]);
+  const [page, setPage] = useState(minPage);
+  const [maxPage, setMaxPage] = useState(minPage);
+  const [changingContacts, setChangingContacts] = useState(false);
 
   useEffect(() => {
     async function getMyContacts(token) {
@@ -37,9 +43,24 @@ export default function Contacts() {
         })
         .catch((error) => console.error(error));
     }
-    getMyContacts(tokenId);
-
+    // getMyContacts(tokenId);
   }, []);
+
+  useEffect(() => {
+    setChangingContacts(true);
+
+    async function getPagedOfContacts(token, page, limit) {
+      await getContacts(token, page, limit)
+        .then((response) => {
+          setContacts([...response.contacts]);
+          setChangingContacts(false);
+          setMaxPage(response.pages);
+        })
+        .catch((error) => console.error(error));
+    }
+
+    getPagedOfContacts(tokenId, page);
+  }, [page]);
 
   const handlerOnSubmit = async (name, number, email) => {
     await createContact(name, number, email, tokenId)
@@ -70,30 +91,42 @@ export default function Contacts() {
 
   return (
     <Fragment>
-      {tokenId ? (
-        <div className="contact-wrapper">
-          <div className="logout-contacts">
-            <Logout />
-          </div>
-          <div className="my-contacts-grid">
-            {contacts.map((contact) => (
-              <Contact key={contact._id} {...contact} />
-            ))}
-            <CreateContact
-              name={name}
-              setName={setName}
-              number={number}
-              setNumber={setNumber}
-              email={email}
-              setEmail={setEmail}
-              status={status}
-              setStatus={setStatus}
-              handlerOnSubmit={handlerOnSubmit}
+      {!changingContacts ? (
+        !tokenId ? (
+          history.push("/signIn")
+        ) : (
+          <div className="contact-wrapper">
+            <div className="logout-contacts">
+              <Logout />
+            </div>
+            <div className="my-contacts-grid">
+              {contacts.map((contact) => (
+                <Contact key={contact._id} {...contact} />
+              ))}
+              <CreateContact
+                name={name}
+                setName={setName}
+                number={number}
+                setNumber={setNumber}
+                email={email}
+                setEmail={setEmail}
+                status={status}
+                setStatus={setStatus}
+                handlerOnSubmit={handlerOnSubmit}
+              />
+            </div>
+            <Pagination
+              page={page}
+              setPage={setPage}
+              minPage={minPage}
+              maxPage={maxPage}
             />
           </div>
-        </div>
+        )
       ) : (
-        history.push("/")
+        <div className="loader-container">
+          <div className="loader"></div>
+        </div>
       )}
     </Fragment>
   );

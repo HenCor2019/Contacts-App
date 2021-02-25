@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+
+// COMPONENTS
 import RequestPasswordHandlerForm from "./RequestPasswordHandlerForm";
 import ScreenSplitLeft from "../ScreenSplit/ScreenSplitLeft/ScreenSplitLeft";
 import ScreenSplitRight from "../ScreenSplit/ScreenSplitRight/ScreenSplitRight";
 
-// css files
+// CSS FILES
 import "./RequestPasswordHandler.css";
+
+// SERVICES
 import { requestPasswordHandler } from "../../services/Services";
 
 export default function RequestPasswordHandler() {

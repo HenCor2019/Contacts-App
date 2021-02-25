@@ -39,6 +39,7 @@ var ContactController = {
   },
   getContacts: async (req, res) => {
     try {
+
       const token = req.header("Author");
 
       if (!token) throw "Access denied";
@@ -47,11 +48,15 @@ var ContactController = {
 
       if (!verifiedToken) throw "Access Denied";
 
-      const contacts = await Contact.find({ author: verifiedToken._id });
+      const { page , limit = 7 } = req.query;
+
+      const contacts = await Contact.find({ author: verifiedToken._id }).skip(limit*(page-1)).limit(parseInt(limit)).exec()
+
+      const totalContacts = await Contact.find({ author: verifiedToken._id })
 
       return res
         .status(200)
-        .json({ error: false, contacts, cantity: contacts.length });
+        .json({ error: false, contacts, cantity: totalContacts.length, pages: Math.ceil(totalContacts.length/limit) });
     } catch (err) {
       res.status(400).json({ error: true, message: "Algo malo sucedio" });
     }

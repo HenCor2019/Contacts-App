@@ -9,6 +9,7 @@ export default function CreateContactButtons({ status, handlerOnCancel }) {
     <Fragment>
       <div className="create-buttons-flex">
         <button
+          type="button"
           className="btn-cancel-contact btn-create"
           onClick={handlerOnCancel}
         >

@@ -1,10 +1,14 @@
 import { useParams } from "react-router";
-import VerifiedSignUp from "./VerifiedSignUp";
 import React, { Fragment, useState } from "react";
-import { registerHandler } from "../../services/Services";
 
-// css
+// COMPONENTS
+import VerifiedSignUp from "./VerifiedSignUp";
+
+// CSS
 import "./HandlerSignUp.css";
+
+// SERVICES
+import { registerHandler } from "../../services/Services";
 
 export default function HandlerSignUp() {
   const { token } = useParams();

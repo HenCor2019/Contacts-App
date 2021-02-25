@@ -1,22 +1,32 @@
-import React from 'react'
+import React from "react";
 
 // CSS FILES
-import './Input.css'
+import "./Input.css";
 
-export default function Input({ id, title, type, value, onChange, placeholder }){
-  return(
+export default function Input({
+  id,
+  title,
+  type,
+  value,
+  onChange,
+  placeholder,
+}) {
+  return (
     <div className="form__group field">
       <input
-        type={ type }
+        type={type}
         className="form__field"
         placeholder={placeholder}
         htmlFor={id}
         id={id}
         value={value}
-        onChange={onChange} required 
-        autoComplete='off'
+        onChange={onChange}
+        required
+        autoComplete="off"
       />
-      <label htmlFor={id} className="form__label">{title}</label>
+      <label htmlFor={id} className="form__label">
+        {title}
+      </label>
     </div>
-  )
+  );
 }

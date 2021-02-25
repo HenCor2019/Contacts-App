@@ -6,11 +6,13 @@ import LoginImg from "./../../img/contacts_login.svg";
 import SignInForm from "../../components/SignIn/SignInForm/SignInForm";
 import SocialMedia from "../../components/SignIn/Social-Media/SocialMedia";
 
+// CSS FILES
+import "./SignIn.css";
+
 // SERVICES
 import { login } from "../../services/Services";
 
-// CSS FILES
-import "./SignIn.css";
+
 
 //CONTEXT
 import UserContext from "../../context/UserContext";

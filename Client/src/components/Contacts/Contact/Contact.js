@@ -1,7 +1,9 @@
 import React from "react";
+
+// COMPONENTS
 import ContactBody from "./ContactBody/ContactBody";
 
-// css files
+// CSS FILES
 import "./Contact.css";
 
 export default function Contact({ name, number, email }) {

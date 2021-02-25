@@ -1,5 +1,9 @@
 import React from "react";
+
+// CSS FILES
 import "./VerifiedSignUp.css";
+
+// IMAGES
 import EmailVerified from "../../img/Registrado.svg";
 
 export default function VerifiedSignUp({ username }) {

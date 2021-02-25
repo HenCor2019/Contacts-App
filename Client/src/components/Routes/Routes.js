@@ -11,21 +11,23 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import RequestPassword from "../../containers/RequestPassword/RequestPassword";
 import RequestPasswordHandler from "../RequestPasswordHandler/RequestPasswordHandler";
 
-
 export default function Routes() {
   return (
-      <Router>
-        <Switch>
-          <Route path="/request-password" component={RequestPassword} />
-          <Route path="/signIn" component={SignIn} />
-          <Route path="/signUp" component={SignUp} />
-          <Route path="/Auth/recovery-password/:token" component={RequestPasswordHandler} />
-          <Route path="/Auth/:token" component={HandlerSignUp} />
-          <Route path="/recovery-password" component={RequestPasswordHandler} />
-          <Route path="/my-contacts" component={Contacts} />
-          <Route exact path="/" component={Home} />
-          <Route  path="/" component={PageNotFound} />
-        </Switch>
-      </Router>
+    <Router>
+      <Switch>
+        <Route path="/request-password" component={RequestPassword} />
+        <Route path="/signIn" component={SignIn} />
+        <Route path="/signUp" component={SignUp} />
+        <Route
+          path="/Auth/recovery-password/:token"
+          component={RequestPasswordHandler}
+        />
+        <Route path="/Auth/:token" component={HandlerSignUp} />
+        <Route path="/recovery-password" component={RequestPasswordHandler} />
+        <Route path="/my-contacts" component={Contacts} />
+        <Route exact path="/" component={Home} />
+        <Route path="/" component={PageNotFound} />
+      </Switch>
+    </Router>
   );
 }

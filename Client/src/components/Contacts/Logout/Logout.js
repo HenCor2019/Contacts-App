@@ -18,7 +18,7 @@ export default function Logout() {
   const handlerOnLogout = (e) => {
     e.preventDefault();
     userToken(null);
-    window.localStorage.clear()
+    window.localStorage.clear();
     history.push("/");
   };
 
