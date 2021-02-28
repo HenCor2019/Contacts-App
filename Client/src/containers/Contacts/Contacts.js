@@ -34,37 +34,35 @@ export default function Contacts() {
   const [page, setPage] = useState(minPage);
   const [maxPage, setMaxPage] = useState(minPage);
   const [changingContacts, setChangingContacts] = useState(false);
-  
-   useEffect(() => {
-     setChangingContacts(true);
-  
-     async function getPagedOfContacts(token, currentPage, limit) {
-       await getContacts(token, currentPage, limit)
-         .then((response) => {
-           setContacts([...response.contacts]);
-           setChangingContacts(false);
-           setMaxPage(response.pages);
-         })
-         .catch((error) => console.error(error));
-     }
-  
-     getPagedOfContacts(tokenId, page);
-   }, [page]);
+
+  useEffect(() => {
+    setChangingContacts(true);
+
+    async function getPagedOfContacts(token, currentPage, limit) {
+      await getContacts(token, currentPage, limit)
+        .then((response) => {
+          setContacts([...response.contacts]);
+          setChangingContacts(false);
+          setMaxPage(response.pages);
+        })
+        .catch((error) => console.error(error));
+    }
+
+    getPagedOfContacts(tokenId, page);
+  }, [page]);
 
   const handlerOnSubmit = async (name, number, email) => {
     await createContact(name, number, email, tokenId)
       .then((response) => {
         if (!response.error) {
+          if (contacts.length < 7) {
+            setContacts((prevContacts) => [
+              ...prevContacts,
+              { _id: response._id, name, number, email },
+            ]);
 
-          if( contacts.length < 7 ){
-setContacts((prevContacts) => [
-            ...prevContacts,
-            { _id: response._id, name, number, email },
-          ])
-
-            setMaxPage( currentPage => currentPage + 1 )
-          } else 
-              setContacts(prevContacts => [...prevContacts])
+            setMaxPage((currentPage) => currentPage + 1);
+          } else setContacts((prevContacts) => [...prevContacts]);
 
           setStatus({ error: false, message: "", loading: false });
           setName("");

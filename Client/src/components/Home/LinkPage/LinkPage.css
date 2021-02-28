@@ -1,5 +1,5 @@
 .link-home{
-  padding: 0 1.34em 0;
+  padding: 0.3em 1.34em 1.14em;
   font-size: 1.35em;
   text-decoration: none;
 
@@ -13,4 +13,10 @@
 
 .link-home .redirect-link:hover {
   border-bottom: solid #F9FDFF 1px;
+}
+
+@media (max-width: 500px){
+  .link-home {
+    font-size: 0.95em;
+  }
 }

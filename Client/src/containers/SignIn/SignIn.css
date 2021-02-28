@@ -22,4 +22,12 @@
   height: 65%;
   align-self: flex-end;
   margin: 4em 0 0 ;
+  visibility: hidden;
+}
+
+@media( min-width: 835px ){
+  .right-img{
+    visibility: visible;
+  }
+
 }

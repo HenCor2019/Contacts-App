@@ -1,6 +1,6 @@
 .home-information-top{
   color: #F9FDFF;
-  height: 30vh;
+  height: 35vh;
   background-color: #6398FF;
 }
 
@@ -14,6 +14,13 @@
   font-size: 1.95em;
   text-align: center;
   font-weight: normal;
+  visibility: hidden;
+}
+
+@media (min-width: 768px) {
+  .home-information-down-title {
+    visibility: visible ;
+  }
 }
 
 .home-imgs-information{
@@ -21,7 +28,23 @@
   justify-content: space-around;
 }
 
+
 .home-imgs-information div{
   margin-left: auto;
+}
 
+@media (max-width: 500px) {
+
+  .home-imgs-information{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-around;
+  }
+
+  .home-imgs-information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

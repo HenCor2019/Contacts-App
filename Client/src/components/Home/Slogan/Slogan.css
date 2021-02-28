@@ -5,4 +5,11 @@
   font-weight: normal;
   margin: 0;
   padding: 0.77em 0 0.12em 0;
+  visibility: hidden ;
+}
+
+@media (min-width: 768px) {
+  .slogan-home {
+    visibility: visible ;
+  }
 }

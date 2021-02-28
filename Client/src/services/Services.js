@@ -12,7 +12,9 @@ export async function registerUser(email, username, password) {
 
     return response.data;
   } catch (error) {
-    return error.response.data;
+    const { response = 'nada' } = error.response
+    console.log( response)
+    return response ? response.data : error.message;
   }
 }
 

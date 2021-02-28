@@ -1,7 +1,3 @@
-/* #11998e: #11998e; */
-/* #11998e: #38ef7d; */
-/* #11998e: #fff; */
-/* #11998e: #9b9b9b; */
 .form__group {
   position: relative;
   padding: 15px 0 0;
@@ -9,6 +5,29 @@
   width: 100%;
 
 }
+
+ @media (min-width: 768px){ 
+   .form__field{ 
+       padding: 8px 0 0; 
+       font-size: 1.73rem; 
+   } 
+  
+   .form__label{ 
+     font-size: 1.45rem; 
+   } 
+ } 
+
+ @media (min-width: 835px){ k
+
+   .form__field{ 
+      padding: 7px 0;
+      font-size: 1.10rem;
+   } 
+  
+   .form__label{ 
+      font-size: 1.10rem;
+   } 
+ } 
 
 .form__field {
   font-family: inherit;

@@ -2,9 +2,24 @@
   width: 80%;
   height: 80%;
   margin: 0 1.53em 0;
+        
 }
 
 .home-message-information{
   text-align: center;
   font-size: 1.164em;
+      
+}
+
+@media( max-width: 500px ){
+  .home-img-information{
+    width: 55%;
+    height: 55%;
+    margin: 0 1.53em 0;
+  }
+
+  .home-message-information{
+    text-align: center;
+    font-size: 0.864em;
+  }
 }

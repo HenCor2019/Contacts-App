@@ -19,7 +19,7 @@ export default function Logout() {
     e.preventDefault();
     userToken(null);
     window.localStorage.clear();
-    history.push("/");
+    history.push("/signIn");
   };
 
   return (

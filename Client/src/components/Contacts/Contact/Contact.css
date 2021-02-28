@@ -23,3 +23,9 @@
   text-align: center;
   color: #F9FDFF;
 }
+
+@media( max-width: 500px ) {
+  .contact-container {
+    margin: 0.34em 2.12em;
+  }
+}

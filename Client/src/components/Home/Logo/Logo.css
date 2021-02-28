@@ -11,3 +11,12 @@
   background-color: #F9FDFF;
   border-radius: 4px;
 }
+
+@media (max-width: 500px) {
+  .title-home {
+    padding: 0.36em 0 0.43em 0.54em;
+    font-size: 1.64em;
+  }
+}
+
+

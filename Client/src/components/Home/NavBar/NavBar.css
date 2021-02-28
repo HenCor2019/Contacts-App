@@ -1,7 +1,17 @@
 .links-home{
   list-style: none;
   display: flex;
-  padding: 0;
+  padding: 1.43em 0 0 0;
   margin: auto;
   justify-content: center;
+}
+
+@media(max-width: 500px){
+
+  .links-home {
+    flex-direction: column;
+    padding: 1.43em 0 0 0;
+    margin: auto;
+    justify-content: center;
+  }
 }

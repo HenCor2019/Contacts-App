@@ -10,6 +10,52 @@
   box-shadow: -8px 8px 7px #9a9b9c;
 }
 
+@media ( max-width: 425px){
+  .form-wrapper-signup {
+    width: 74vw;
+    height: 430px;
+    left: 14vw;
+  }
+}
+
+@media ( min-width: 425px){
+  .form-wrapper-signup {
+    width: 62vw;
+    height: 430px;
+    left: 18vw;
+  }
+}
+
+@media ( min-width: 768px){
+  .form-wrapper-signup {
+    width: 45vw;
+    height: 430px;
+    left: 28vw;
+  }
+}
+
+@media ( min-width: 1000px){
+  .form-wrapper-signup {
+    width: 25vw;
+    height: 430px;
+    left: 37vw;
+  }
+}
+
+/* @media ( min-width: 1024px){ */
+/*   .form-wrapper-signup { */
+/*     width: 45vw; */
+/*     height: 51vh; */
+/*     left: 28vw; */
+/*   } */
+/*  */
+/*   .form-title-signup { */
+/*     margin: 0.19em auto 1.45em; */
+/*     font-size: 2.773em; */
+/*   } */
+/* } */
+
+
 .form-title-signup {
   margin: 0.10em auto 1.45em;
   text-align: center;
