@@ -34,42 +34,38 @@ export default function Contacts() {
   const [page, setPage] = useState(minPage);
   const [maxPage, setMaxPage] = useState(minPage);
   const [changingContacts, setChangingContacts] = useState(false);
-
-  useEffect(() => {
-    async function getMyContacts(token) {
-      await getContacts(token)
-        .then((response) => {
-          setContacts((prevContact) => [...prevContact, ...response.contacts]);
-        })
-        .catch((error) => console.error(error));
-    }
-    // getMyContacts(tokenId);
-  }, []);
-
-  useEffect(() => {
-    setChangingContacts(true);
-
-    async function getPagedOfContacts(token, page, limit) {
-      await getContacts(token, page, limit)
-        .then((response) => {
-          setContacts([...response.contacts]);
-          setChangingContacts(false);
-          setMaxPage(response.pages);
-        })
-        .catch((error) => console.error(error));
-    }
-
-    getPagedOfContacts(tokenId, page);
-  }, [page]);
+  
+   useEffect(() => {
+     setChangingContacts(true);
+  
+     async function getPagedOfContacts(token, currentPage, limit) {
+       await getContacts(token, currentPage, limit)
+         .then((response) => {
+           setContacts([...response.contacts]);
+           setChangingContacts(false);
+           setMaxPage(response.pages);
+         })
+         .catch((error) => console.error(error));
+     }
+  
+     getPagedOfContacts(tokenId, page);
+   }, [page]);
 
   const handlerOnSubmit = async (name, number, email) => {
     await createContact(name, number, email, tokenId)
       .then((response) => {
         if (!response.error) {
-          setContacts((prevContacts) => [
+
+          if( contacts.length < 7 ){
+setContacts((prevContacts) => [
             ...prevContacts,
-            { _id: Math.random() * 100 + 1, name, number, email },
-          ]);
+            { _id: response._id, name, number, email },
+          ])
+
+            setMaxPage( currentPage => currentPage + 1 )
+          } else 
+              setContacts(prevContacts => [...prevContacts])
+
           setStatus({ error: false, message: "", loading: false });
           setName("");
           setNumber("");

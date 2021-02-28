@@ -12,8 +12,6 @@ import "./SignIn.css";
 // SERVICES
 import { login } from "../../services/Services";
 
-
-
 //CONTEXT
 import UserContext from "../../context/UserContext";
 

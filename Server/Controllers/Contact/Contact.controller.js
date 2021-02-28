@@ -32,7 +32,7 @@ var ContactController = {
 
       return res
         .status(201)
-        .json({ error: false, message: "New contact Added" });
+        .json({ error: false, message: "New contact Added", _id: newContact._id });
     } catch (err) {
       return res.status(400).json({ error: true, message: err });
     }
@@ -52,11 +52,11 @@ var ContactController = {
 
       const contacts = await Contact.find({ author: verifiedToken._id }).skip(limit*(page-1)).limit(parseInt(limit)).exec()
 
-      const totalContacts = await Contact.find({ author: verifiedToken._id })
+      const totalContacts = await Contact.countDocuments({ author: verifiedToken._id })
 
       return res
         .status(200)
-        .json({ error: false, contacts, cantity: totalContacts.length, pages: Math.ceil(totalContacts.length/limit) });
+        .json({ error: false, contacts, cantity: totalContacts.length, pages: Math.ceil(totalContacts/limit) });
     } catch (err) {
       res.status(400).json({ error: true, message: "Algo malo sucedio" });
     }

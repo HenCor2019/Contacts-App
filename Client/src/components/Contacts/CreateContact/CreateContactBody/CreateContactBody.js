@@ -4,10 +4,8 @@ import React from "react";
 import "./CreateContactBody.css";
 
 export default function CreateContactBody({ title, value, setValue }) {
-  const onChange = (e, save) => {
-    save(e.target.value);
-    console.log("estoy guardando");
-  };
+
+  const onChange = (e, save) => save(e.target.value);
 
   return (
     <div>
