@@ -15,7 +15,7 @@ import { registerUser } from "../../services/Services";
 const MESSAGE_SEND = {
   header: "Enviado",
   body:
-    "Ingresa a tu dirección de correo electrónico y sigue las instrucciones",
+  "Ingresa a tu dirección de correo electrónico y sigue las instrucciones",
 };
 
 export default function SignUp() {

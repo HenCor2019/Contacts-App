@@ -10,11 +10,11 @@ var UserController = {
       await registerValidator(req.body);
 
       // VERIFICANDO QUE YA HAYA VENCIDO SU TOKEN
-      const repeatUser = await User.findOne({ $and: [{username: req.body.username}, { email: req.body.email }] })
+      const repeatUser = await User.findOne({
+        $and: [{ username: req.body.username }, { email: req.body.email }],
+      });
 
-      console.log({ repeatUser })
-
-      if(repeatUser && !repeatUser.active) {
+      if (repeatUser && !repeatUser.active) {
         const newToken = jwt.sign(
           { _id: repeatUser._id },
           process.env.TOKEN_REGISTER_KEY,
@@ -30,9 +30,9 @@ var UserController = {
                <h3>Estamos felices de que te incorpores </h3>
                <br /><br />
                <p>Si no confirmas tu dirección de correo electrónico en un maximo tiempo de 15 minutos, es necesario rellenar los campos para lograr registrarte nuevamente. </p>
-               
+
                <p>Para verificar tu cuenta accede al siguiente enlace:</p>
-               <a href="${process.env.CLIENT_URL}/Auth/${newToken}">Verificar cuenta</a>
+               <a href="${process.env.CLIENT_URL}Auth/${newToken}">Verificar cuenta</a>
           `,
         };
 
@@ -80,9 +80,9 @@ var UserController = {
              <h3>Estamos felices de que te incorpores </h3>
              <br /><br />
              <p>Si no confirmas tu dirección de correo electrónico en un maximo tiempo de 15 minutos, es necesario rellenar los campos para lograr registrarte nuevamente. </p>
-             
+
              <p>Para verificar tu cuenta accede al siguiente enlace:</p>
-             <a href="${process.env.CLIENT_URL}/Auth/${token}">Verificar cuenta</a>
+             <a href="${process.env.CLIENT_URL}Auth/${token}">Verificar cuenta</a>
         `,
       };
 
@@ -93,12 +93,10 @@ var UserController = {
         .status(201)
         .json({ error: false, message: "Correo enviado exitosamente" });
     } catch (err) {
-      return res
-        .status(400)
-        .json({
-          error: true,
-          message: err.details != null ? err.details[0].message : err,
-        });
+      return res.status(400).json({
+        error: true,
+        message: err.details != null ? err.details[0].message : err,
+      });
     }
   },
   signUpHandler: async (req, res) => {
@@ -117,13 +115,11 @@ var UserController = {
 
       await User.findOneAndUpdate({ _id: verifiedToken._id }, { active: true });
 
-      return res
-        .status(200)
-        .json({
-          error: false,
-          message: "Usuario registrado",
-          username: user.username,
-        });
+      return res.status(200).json({
+        error: false,
+        message: "Usuario registrado",
+        username: user.username,
+      });
     } catch (err) {
       return res.status(500).json({ error: true, message: err });
     }
@@ -152,7 +148,7 @@ var UserController = {
         <br />
         <p>Para completar el proceso de restablecimiento de contraseña, visita el siguiente enlace:</p>
 
-        <a href="${process.env.CLIENT_URL}/Auth/recovery-password/${token}">Restablecer contraseña</a>
+        <a href="${process.env.CLIENT_URL}Auth/recovery-password/${token}">Restablecer contraseña</a>
         `,
       };
 
@@ -203,7 +199,7 @@ var UserController = {
 
       const user = await User.findOne({ email: req.body.email });
 
-      if (!user) throw "Email and password do not match";
+      if (!user || user.active) throw "Email and password do not match";
 
       //comparando
       const logged = await bcrypt.compare(req.body.password, user.password);

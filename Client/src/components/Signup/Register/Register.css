@@ -4,6 +4,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .register-title {
   color: #456268;
   font-weight: normal;
@@ -30,4 +31,24 @@
 .register-img {
   width: 40%;
   height: 40%;
+}
+
+@media( max-width: 500px ){
+
+  .register-wrapper-account{
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .register-img {
+    width: 65%;
+    height: 30%;
+  }
+
+  .register-title {
+    margin: 0.12em;
+    font-size: 2.18em;
+  }
+
 }

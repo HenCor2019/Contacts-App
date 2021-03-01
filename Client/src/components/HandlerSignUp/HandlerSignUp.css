@@ -52,3 +52,13 @@
   }
 }
 
+@media ( max-width: 500px ){
+  .verify-email-wrapper {
+    height: 100vh;
+    margin: 0;
+  }
+
+  .verify-email-message {
+    font-size: 1.342em;
+  }
+}

@@ -62,7 +62,7 @@ export default function RequestPasswordHandlerForm(props) {
           </form>
         </div>
       ) : (
-        history.push("/")
+        history.push("/signUp")
       )}
     </Fragment>
   );
