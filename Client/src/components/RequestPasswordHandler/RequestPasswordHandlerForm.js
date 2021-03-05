@@ -42,7 +42,7 @@ export default function RequestPasswordHandlerForm(props) {
   return (
     <Fragment>
       {token ? (
-        <div className="form-wrapper-request">
+        <div className="form-wrapper-request-handler">
           <form className="form-request" onSubmit={_handlerOnSubmit}>
             <h1 className="form-title-request">Recuperación de contraseña</h1>
             <p className="form-message-request">{INSTRUCTIONS_MESSAGE}</p>

@@ -34,3 +34,9 @@
 .btn-submit-form:hover {
   background-color: #2f72f5;
 }
+
+@media (min-width: 320px) and (max-width: 410px) {
+  .btn-submit-form {
+    font-size: 0.902em;
+  }
+}
