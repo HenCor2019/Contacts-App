@@ -41,7 +41,8 @@ var UserController = {
         return res
           .header("Register", newToken)
           .status(201)
-          .json({ error: false, message: "Correo enviado exitosamente" });
+          .json({ error: false, message: "Correo enviado exitosamente" })
+          .end();
       }
 
       // GENERAL
@@ -91,12 +92,16 @@ var UserController = {
       return res
         .header("Register", token)
         .status(201)
-        .json({ error: false, message: "Correo enviado exitosamente" });
+        .json({ error: false, message: "Correo enviado exitosamente" })
+        .end();
     } catch (err) {
-      return res.status(400).json({
-        error: true,
-        message: err.details != null ? err.details[0].message : err,
-      });
+      return res
+        .status(400)
+        .json({
+          error: true,
+          message: err.details != null ? err.details[0].message : err,
+        })
+        .end();
     }
   },
   signUpHandler: async (req, res) => {
@@ -115,13 +120,16 @@ var UserController = {
 
       await User.findOneAndUpdate({ _id: verifiedToken._id }, { active: true });
 
-      return res.status(200).json({
-        error: false,
-        message: "Usuario registrado",
-        username: user.username,
-      });
+      return res
+        .status(200)
+        .json({
+          error: false,
+          message: "Usuario registrado",
+          username: user.username,
+        })
+        .end();
     } catch (err) {
-      return res.status(500).json({ error: true, message: err });
+      return res.status(500).json({ error: true, message: err }).end();
     }
   },
   requestPassword: async (req, res) => {
@@ -157,9 +165,10 @@ var UserController = {
       return res
         .header("Reset", token)
         .status(200)
-        .json({ error: false, message: "Correo enviado exitosamente" });
+        .json({ error: false, message: "Correo enviado exitosamente" })
+        .end();
     } catch (err) {
-      return res.status(500).json({ error: true, message: err });
+      return res.status(500).json({ error: true, message: err }).end();
     }
   },
   requestPasswordHandler: async (req, res) => {
@@ -188,9 +197,10 @@ var UserController = {
 
       return res
         .status(200)
-        .json({ error: false, message: "Contraseña cambiada exitosamente" });
+        .json({ error: false, message: "Contraseña cambiada exitosamente" })
+        .end();
     } catch (err) {
-      return res.status(500).json({ error: true, message: err });
+      return res.status(500).json({ error: true, message: err }).end();
     }
   },
   login: async (req, res) => {
@@ -199,20 +209,24 @@ var UserController = {
 
       const user = await User.findOne({ email: req.body.email });
 
-      if (!user || user.active) throw "Email and password do not match";
+      if (!user || !user.active) throw "Email and password do not match";
 
       //comparando
       const logged = await bcrypt.compare(req.body.password, user.password);
       if (!logged) throw "Email and password do not match";
 
       //token para ser usado para cosas privadas
-      const token = jwt.sign({ _id: user._id }, process.env.TOKEN_KEY);
+      const token = jwt.sign(
+        { _id: user._id, username: user.username, email: user.email },
+        process.env.TOKEN_KEY
+      );
 
       return res
         .status(200)
-        .json({ error: false, message: "Successfuly", token });
+        .json({ error: false, message: "Successfuly login", token })
+        .end();
     } catch (err) {
-      return res.status(400).json({ error: true, message: err });
+      return res.status(400).json({ error: true, message: err }).end();
     }
   },
 };

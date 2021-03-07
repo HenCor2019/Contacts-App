@@ -15,17 +15,23 @@ const INSTRUCTIONS_MESSAGE =
 export default function RequestPasswordForm({
   data,
   setData,
+  status,
+  setStatus,
   handlerOnSubmit,
 }) {
-  const handlerOnChange = (e, save) => save({ ...data, value: e.target.value });
+  const handlerOnChange = (e, save) => {
+    save(e.target.value);
+
+    console.log({ data });
+  };
 
   const _handlerOnSubmit = (e) => {
     e.preventDefault();
-    setData({ ...data, error: false, message: "", loading: true });
+    setStatus({ ...status, error: false, message: "", loading: true });
 
-    if (!data.value) {
-      setData({
-        ...data,
+    if (!data) {
+      setStatus({
+        ...status,
         error: true,
         message: "Ingresa un correo o usuario",
         loading: false,
@@ -33,7 +39,7 @@ export default function RequestPasswordForm({
       return;
     }
 
-    handlerOnSubmit(data.value);
+    handlerOnSubmit(data);
   };
 
   return (
@@ -45,12 +51,12 @@ export default function RequestPasswordForm({
           id="request"
           title="Usuario o correo"
           type="text"
-          value={data.value}
+          value={data}
           placeholder="Ingresa tu usuario o correo"
           onChange={(e) => handlerOnChange(e, setData)}
         />
         <ButtonForm loading={data.loading} message="Enviar solicitud" />
-        <Warning error={data.error} message={data.message} />
+        <Warning error={status.error} message={status.message} />
         <FormFooter
           message="¿Olvidaste tu correo?"
           route="/"

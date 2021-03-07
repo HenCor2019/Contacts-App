@@ -19,7 +19,10 @@ export default function RequestPasswordHandlerForm(props) {
 
   const { token } = useParams();
 
-  const handlerOnChange = (e, save) => save(e.target.value);
+  const handlerOnChange = (e, save) => {
+    console.log(e.target.value);
+    save(e.target.value);
+  };
 
   const _handlerOnSubmit = async (e) => {
     e.preventDefault();

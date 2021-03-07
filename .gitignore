@@ -4,6 +4,7 @@
 Client/node_modules\
 Server/node_modules\
 node_modules
+Client/src/variables
 
 /.pnp
 .pnp.js

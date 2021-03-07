@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const BASE_URI = "http://localhost:5000";
+import {BASE_URI} from "../variables";
 
 export async function registerUser(email, username, password) {
   try {
@@ -12,7 +11,9 @@ export async function registerUser(email, username, password) {
 
     return response.data;
   } catch (error) {
-    return error.response.data;
+    return !error?.response?.data
+      ? { error: true, message: error.message }
+      : error.response.data;
   }
 }
 
@@ -28,7 +29,9 @@ export async function registerHandler(token) {
 
     return response.data;
   } catch (error) {
-    return error.response.data;
+    return !error?.response?.data
+      ? { error: true, message: error.message }
+      : error.response.data;
   }
 }
 
@@ -42,7 +45,9 @@ export async function requestPassword(data) {
 
     return response.data;
   } catch (error) {
-    return error.response.data;
+    return !error?.response?.data
+      ? { error: true, message: error.message }
+      : error.response.data;
   }
 }
 
@@ -57,7 +62,9 @@ export async function requestPasswordHandler(password, token) {
 
     return response.data;
   } catch (error) {
-    return error.response.data;
+    return !error?.response?.data
+      ? { error: true, message: error.message }
+      : error.response.data;
   }
 }
 
@@ -72,10 +79,27 @@ export async function getContacts(token, page = 1, limit = 7) {
 
     return response.data;
   } catch (error) {
-    return error.response.data;
+    return !error?.response?.data
+      ? { error: true, message: error.message }
+      : error.response.data;
   }
 }
 
+export async function transformGoogleToken(token) {
+  try {
+    const response = await axios({
+      url: `${BASE_URI}/contacts/get-contacts-by-google`,
+      method: "GET",
+      headers: { Google: token },
+    });
+
+    return response.data;
+  } catch (error) {
+    return !error?.response?.data
+      ? { error: true, message: error.message }
+      : error.response.data;
+  }
+}
 export async function createContact(name, number, email, token) {
   try {
     const response = await axios({
@@ -87,7 +111,9 @@ export async function createContact(name, number, email, token) {
 
     return response.data;
   } catch (error) {
-    return error.response.data;
+    return !error?.response?.data
+      ? { error: true, message: error.message }
+      : error.response.data;
   }
 }
 
@@ -101,6 +127,8 @@ export async function login(email, password) {
 
     return response.data;
   } catch (error) {
-    return error.response.data;
+    return !error?.response?.data
+      ? { error: true, message: error.message }
+      : error.response.data;
   }
 }

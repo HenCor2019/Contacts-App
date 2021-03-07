@@ -40,5 +40,5 @@ mongoose
 
 app.use(cors());
 app.use(express.json());
-app.use("/users", useRoutes);
-app.use("/contacts", contactRoutes);
+app.use("/api/users", useRoutes);
+app.use("/api/contacts", contactRoutes);

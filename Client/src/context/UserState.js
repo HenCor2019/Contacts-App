@@ -4,7 +4,7 @@ import UserReducer from "./UserReducer";
 
 export default function UserState(props) {
   const initialState = {
-    tokenId: window.localStorage.getItem("token"),
+    tokenId: window.localStorage.getItem("profile"),
   };
 
   const [state, dispatch] = useReducer(UserReducer, initialState);

@@ -32,7 +32,7 @@ export default function SignIn() {
         if (!response.error) {
           setLoginChecked({ ...loginChecked, loading: false, message: "" });
           userToken(response.token);
-          window.localStorage.setItem("token", response.token);
+          window.localStorage.setItem("profile", response.token);
           return;
         }
 

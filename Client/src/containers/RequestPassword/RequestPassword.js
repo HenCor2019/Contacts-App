@@ -18,45 +18,44 @@ const MESSAGE_SEND = {
     "Ingresa a tu correo electrónico y sigue las indicaciones para obtener una nueva contraseña",
 };
 export default function RequestPassword() {
-  const [data, setData] = useState({
-    value: "",
+  const [data, setData] = useState("");
+  const [status, setStatus] = useState({
     send: false,
     error: false,
     message: "",
     loading: false,
   });
 
-  const handlerOnSubmit = async (data) => {
+  const handlerOnSubmit = async (field) => {
+    await requestPassword(field)
+      .then((response) => {
+        if (!response.error) {
+          setStatus({ ...status, send: true, loading: false });
+          return;
+        }
 
-    await requestPassword(data).then((response) => {
-      if (!response.error) {
-        setData({ ...data, send: true, loading: false });
-        return;
-      }
-
-      setData({
-        ...data,
-        send: false,
-        error: true,
-        message: response.message,
-        loading: false,
+        setStatus({
+          ...status,
+          send: false,
+          error: true,
+          message: response.message,
+          loading: false,
+        });
+      })
+      .catch((error) => {
+        setStatus({
+          ...status,
+          send: false,
+          error: true,
+          message: "Algo ha fallado",
+          loading: false,
+        });
+        console.error(error);
       });
-
-    }).catch(error => {
-      setData({
-        ...data,
-        send: false,
-        error: true,
-        message: "Algo ha fallado",
-        loading: false,
-      });
-      console.log( error )
-
-    });
   };
   return (
     <Fragment>
-      {data.send ? (
+      {status.send ? (
         <Register header={MESSAGE_SEND.header} body={MESSAGE_SEND.body} />
       ) : (
         <div className="request-password-container">
@@ -64,6 +63,8 @@ export default function RequestPassword() {
           <RequestPasswordForm
             data={data}
             setData={setData}
+            status={status}
+            setStatus={setStatus}
             handlerOnSubmit={handlerOnSubmit}
           />
           <ScreenSplitRight />

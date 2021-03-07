@@ -15,6 +15,8 @@ const validator = {
       email: joi.string().email().required(),
       password: joi.string().required(),
     });
+
+    return validateLogin.validateAsync(data);
   },
 };
 

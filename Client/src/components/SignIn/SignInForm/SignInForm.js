@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Input from "../../Input/Input";
 import FormFooter from "../../FormFooter/FormFooter";
 import Warning from "../../Warning/Warning";
+import ButtonGoogle from "../../ButtonForm/ButtonGoogle";
 
 // CSS FILES
 import "./SignInForm.css";
@@ -70,6 +71,7 @@ export default function SignInForm(props) {
             ¿Olvidaste tu contraseña?
           </Link>
         </div>
+        <ButtonGoogle />
         <Warning {...login} />
         <FormFooter
           message="¿No posees una cuenta?"

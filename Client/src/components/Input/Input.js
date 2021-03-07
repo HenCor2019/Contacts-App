@@ -22,7 +22,6 @@ export default function Input({
         value={value}
         onChange={onChange}
         required
-        autoComplete="off"
       />
       <label htmlFor={id} className="form__label">
         {title}

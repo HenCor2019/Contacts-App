@@ -15,7 +15,7 @@ import { registerUser } from "../../services/Services";
 const MESSAGE_SEND = {
   header: "Enviado",
   body:
-  "Ingresa a tu dirección de correo electrónico y sigue las instrucciones",
+    "Ingresa a tu dirección de correo electrónico y sigue las instrucciones",
 };
 
 export default function SignUp() {
@@ -30,20 +30,31 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
 
   const handlerOnSubmit = async (email, username, password) => {
-    await registerUser(email, username, password).then((response) => {
-      if (!response.error) {
-        setRegister({ ...register, loading: false, success: true });
-        return;
-      }
+    await registerUser(email, username, password)
+      .then((response) => {
+        if (!response.error) {
+          setRegister({ ...register, loading: false, success: true });
+          return;
+        }
 
-      setRegister({
-        ...register,
-        message: response.message,
-        error: true,
-        loading: false,
+        setRegister({
+          ...register,
+          message: response.message,
+          success: false,
+          error: true,
+          loading: false,
+        });
+        return;
+      })
+      .catch((error) => {
+        setRegister({
+          ...register,
+          success: false,
+          message: error.message,
+          error: true,
+          loading: false,
+        });
       });
-      return;
-    });
   };
 
   return (
@@ -65,7 +76,7 @@ export default function SignUp() {
           <ScreenSplitRight />
         </div>
       ) : (
-        <Register {... MESSAGE_SEND} />
+        <Register {...MESSAGE_SEND} />
       )}
     </Fragment>
   );
